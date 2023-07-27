@@ -4,12 +4,13 @@
     "web": {
       "bundler": "metro"
     },
+    "backgroundColor": "#232320",
     "name": "watchthis",
     "slug": "watchthis",
     "splash": {
       "image": "./assets/icons/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#232320"
     }
   }
 }

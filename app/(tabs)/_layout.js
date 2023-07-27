@@ -18,7 +18,7 @@ export default () => {
         },
         tabBarStyle: {
           backgroundColor: colors.bottomTabBarBackground,
-          borderTopWidth: 0.5,
+          borderTopWidth: 1,
           borderTopColor: colors.bottomTabBarBorder,
           height: 60,
           paddingBottom: 7,

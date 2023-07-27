@@ -5,6 +5,11 @@
       "bundler": "metro"
     },
     "name": "watchthis",
-    "slug": "watchthis"
+    "slug": "watchthis",
+    "splash": {
+      "image": "./assets/icons/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    }
   }
 }

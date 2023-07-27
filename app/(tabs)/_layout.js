@@ -1,5 +1,6 @@
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import colors from "../../assets/colors";
 
 export default () => {
   return (
@@ -16,16 +17,16 @@ export default () => {
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarStyle: {
-          backgroundColor: "#201F1F",
-          borderTopWidth: 2,
-          borderColor: "#222222",
+          backgroundColor: colors.bottomTabBarBackground,
+          borderTopWidth: 0.5,
+          borderTopColor: colors.bottomTabBarBorder,
           height: 60,
           paddingBottom: 7,
         },
       })}
       tabBarOptions={{
-        activeTintColor: "#FF6347",
-        inactiveTintColor: "#ADA5A5",
+        activeTintColor: colors.maintheme,
+        inactiveTintColor: colors.tabIconInactive,
       }}
     >
       <Tabs.Screen name="Trailers" options={{ headerShown: false }} />

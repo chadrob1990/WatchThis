@@ -7,9 +7,7 @@ import VideoPlayerButtons from "./components/VideoPlayerButtons";
 const VideoPlayerUI = () => {
   return (
     <View style={styles.container}>
-      <VideoPlayer
-        uri={"https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"}
-      />
+      <VideoPlayer videoid={"uYPbbksJxIg"} />
       <View style={styles.buttonsContainer}>
         <VideoPlayerButtons likes={6452} />
       </View>

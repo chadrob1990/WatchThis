@@ -2,15 +2,15 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text } from "react-native";
 import colors from "../../assets/colors";
+import PosterList from "../../features/posterlist/index";
 
 const Saved = () => {
   return (
     <LinearGradient
-      colors={[colors.gradient1, colors.gradient2, colors.gradient3]}
+      colors={[colors.gradient2, colors.gradient1, colors.gradient3]}
       style={styles.container}
     >
-      <Text style={styles.text}>Saved</Text>
-      {/* Poster List Component*/}
+      <PosterList />
     </LinearGradient>
   );
 };

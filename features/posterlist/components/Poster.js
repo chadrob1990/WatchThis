@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const Posters = () => {
+const Poster = () => {
   return (
     <View>
-      <Text>Posters</Text>
+      <Text>Poster</Text>
     </View>
   );
 };
 
-export default Posters;
+export default Poster;

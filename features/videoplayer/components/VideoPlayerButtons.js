@@ -8,8 +8,8 @@ const VideoPlayerButtons = (props) => {
     <View style={styles.container}>
       <SaveButton size={35} item={"Test"} />
       <Text style={styles.buttonText}>{props.likes}</Text>
-      <ShareButton size={35} item={"Test"} />
-      <Text style={styles.buttonText}>Share</Text>
+      {/* <ShareButton size={35} item={"Test"} />
+      <Text style={styles.buttonText}>Share</Text> */}
     </View>
   );
 };
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontStyle: "italic",
     justifyContent: "center",
-    paddingBottom: 20,
+    // paddingBottom: 20,
     paddingTop: 7,
   },
 });

@@ -1,12 +1,9 @@
 import { View, Text } from "react-native";
 import React from "react";
+import NoList from "./components/NoList";
 
-const index = () => {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  );
+const PosterList = () => {
+  return <NoList />;
 };
 
-export default index;
+export default PosterList;

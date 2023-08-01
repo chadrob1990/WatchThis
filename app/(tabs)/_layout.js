@@ -6,6 +6,8 @@ export default () => {
   return (
     <Tabs
       screenOptions={({ route }) => ({
+        tabBarActiveTintColor: colors.maintheme,
+        tabBarInactiveTintColor: colors.tabIconInactive,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
@@ -24,13 +26,33 @@ export default () => {
           paddingBottom: 7,
         },
       })}
-      tabBarOptions={{
-        activeTintColor: colors.maintheme,
-        inactiveTintColor: colors.tabIconInactive,
-      }}
     >
-      <Tabs.Screen name="Trailers" options={{ headerShown: false }} />
-      <Tabs.Screen name="Saved" options={{ headerShown: false }} />
+      <Tabs.Screen
+        name="Trailers"
+        options={{
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: colors.header,
+          },
+          headerTintColor: colors.tabIconInactive,
+          headerTitleStyle: {
+            // fontWeight: "bold",
+          },
+        }}
+      />
+      <Tabs.Screen
+        name="Saved"
+        options={{
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: colors.header,
+          },
+          headerTintColor: colors.tabIconInactive,
+          headerTitleStyle: {
+            // fontWeight: "bold",
+          },
+        }}
+      />
     </Tabs>
   );
 };

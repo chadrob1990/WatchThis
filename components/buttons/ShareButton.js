@@ -5,6 +5,7 @@ import { Ionicons, FontAwesome } from "@expo/vector-icons";
 const ShareButton = (props) => {
   const [sharing, setSharing] = useState(false);
 
+  //   Move to utilities
   const handleShare = async (item) => {
     setSharing(!sharing);
     if (!sharing) {

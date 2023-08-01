@@ -9,10 +9,10 @@ const VideoPlayerUI = () => {
     <View style={styles.container}>
       <VideoPlayer videoid={"uYPbbksJxIg"} />
       <View style={styles.buttonsContainer}>
-        <VideoPlayerButtons likes={6452} />
+        <VideoPlayerButtons videolikes={6452} />
       </View>
       <View style={styles.titleContainer}>
-        <VideoPlayerTitle title={"Oppenheimer"} date={"July 21, 2023"} />
+        <VideoPlayerTitle title={"Oppenheimer"} releasedate={"July 21, 2023"} />
       </View>
     </View>
   );

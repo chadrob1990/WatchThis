@@ -6,6 +6,7 @@ import colors from "../../assets/colors";
 const SaveButton = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
+  //   Move to utilities
   const handleBookmark = async (item) => {
     setIsLiked(!isLiked);
     if (!isLiked) {

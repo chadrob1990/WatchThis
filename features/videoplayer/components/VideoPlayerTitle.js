@@ -5,7 +5,7 @@ const VideoPlayerTitle = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>{props.title}</Text>
-      <Text style={styles.text}>{props.date}</Text>
+      <Text style={styles.text}>{props.releasedate}</Text>
     </View>
   );
 };

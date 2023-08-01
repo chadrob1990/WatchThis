@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     justifyContent: "center",
+    maxWidth: 950,
   },
   trailerContainer: {
     width: "100%",

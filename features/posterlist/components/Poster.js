@@ -5,10 +5,11 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from "react-native";
-import { openBottomSheet } from "../../bottomsheet/utils/openBottomSheet";
+import { useRouter } from "expo-router";
 import { AppContext } from "../../../app/_layout";
 
 const Poster = (props) => {
+  const navigation = useRouter();
   const context = useContext(AppContext);
   const [poster, setPoster] = useState(null);
   let item = props.item;
@@ -18,14 +19,12 @@ const Poster = (props) => {
   }, []);
 
   const fetchPoster = () => {
-    //For testing
     setPoster(props.item._images.movieposter);
   };
 
   const setBottomSheet = () => {
     context.setBottomSheetType("video");
     context.setBottomSheetContent(item);
-    // context.setOpen(true);
   };
 
   // Calculate the width and height of each poster dynamically based on the screen size
@@ -36,7 +35,7 @@ const Poster = (props) => {
   return (
     <TouchableOpacity
       type="submit"
-      onPress={() => [setBottomSheet(), openBottomSheet()]}
+      onPress={() => [setBottomSheet(), navigation.push("/details")]}
     >
       <Image
         source={{ uri: "" + poster }}

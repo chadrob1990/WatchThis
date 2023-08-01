@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Image, Platform } from "react-native";
 import { WebView } from "react-native-webview";
-import colors from "../../../../assets/colors";
+import colors from "../../assets/colors";
 // import CloseButton from "../../../../components/buttons/CloseButton";
 
 const VideoDetails = (props) => {
@@ -65,23 +65,19 @@ const VideoDetails = (props) => {
         <></>
       ) : (
         <View>
-          <View style={styles.closeButtonPOS}>
-            {/* <CloseButton bottomsheet={true} setOpen={setOpen} /> */}
-          </View>
           <View style={styles.itemDetailsContainer}>
             <Text style={styles.headerText}>{item.title}</Text>
-            <View style={styles.availableContainer}>
-              {/*Component with conditions */}
+            {/* <View style={styles.availableContainer}>
               <View style={styles.availableIcon} />
-            </View>
-            <View style={styles.ratingsContainer}>
-              {/* <HeartIcon
+            </View> */}
+            {/* <View style={styles.ratingsContainer}>
+              <HeartIcon
                 style={styles.traktHeart}
                 color={colors.red}
                 height={16}
                 width={18}
                 strokecolor={colors.mediumgrey}
-              /> */}
+              />
               <Text style={styles.traktPercent}>{rating}</Text>
               {rottenPercent ? (
                 <>
@@ -91,36 +87,7 @@ const VideoDetails = (props) => {
               ) : (
                 <></>
               )}
-            </View>
-            <View style={styles.detailsContainer}>
-              <View style={styles.genreDetailsContainer}>
-                {/*Should I limit this? */}
-                <Text style={styles.title}>
-                  Genre:
-                  <Text
-                    style={[styles.details, { textTransform: "capitalize" }]}
-                  >
-                    {genres}
-                  </Text>
-                </Text>
-              </View>
-              <View style={styles.otherDetailsContainer}>
-                <Text style={styles.title}>
-                  Rating:{" "}
-                  {item.certification ? (
-                    <Text style={styles.details}>{item.certification}</Text>
-                  ) : (
-                    <Text style={styles.details}>?</Text>
-                  )}
-                </Text>
-                <Text style={styles.title}>
-                  Runtime: <Text style={styles.details}>{runtime}</Text>
-                </Text>
-                <Text style={styles.title}>
-                  Release Year: <Text style={styles.details}>{item.year}</Text>
-                </Text>
-              </View>
-            </View>
+            </View> */}
             {item.trailer ? (
               <View style={styles.trailerContainer}>
                 {currentOS == "web" ? (
@@ -136,6 +103,43 @@ const VideoDetails = (props) => {
             ) : (
               <></>
             )}
+            <View style={styles.detailsContainer}>
+              <View style={styles.genreDetailsContainer}>
+                {/*Should I limit this? */}
+                <Text style={styles.title}>
+                  Genre:
+                  <Text
+                    style={[styles.details, { textTransform: "capitalize" }]}
+                  >
+                    {genres}
+                  </Text>
+                </Text>
+              </View>
+              <View style={styles.otherDetailsContainer}>
+                <Text style={styles.title}>
+                  Score:{" "}
+                  {rating ? (
+                    <Text style={styles.details}>{rating} </Text>
+                  ) : (
+                    <Text style={styles.details}>? </Text>
+                  )}
+                </Text>
+                <Text style={styles.title}>
+                  Rating:{" "}
+                  {item.certification ? (
+                    <Text style={styles.details}>{item.certification} </Text>
+                  ) : (
+                    <Text style={styles.details}>TBD </Text>
+                  )}
+                </Text>
+                <Text style={styles.title}>
+                  Runtime: <Text style={styles.details}>{runtime}</Text>
+                </Text>
+                <Text style={styles.title}>
+                  Release Year: <Text style={styles.details}>{item.year}</Text>
+                </Text>
+              </View>
+            </View>
             {/*Need to ensure there is a tagline*/}
             {tagline ? (
               <Text style={styles.tagline}>{item.tagline}</Text>
@@ -146,7 +150,7 @@ const VideoDetails = (props) => {
             <Text
               style={[
                 styles.description,
-                tagline ? { paddingTop: 15 } : { paddingTop: 60 },
+                tagline ? { paddingTop: 15 } : { paddingTop: 30 },
               ]}
             >
               {item.overview}
@@ -179,10 +183,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   headerText: {
-    fontSize: 26,
+    fontSize: 22,
     fontWeight: "bold",
     // alignSelf: 'center',
-    paddingTop: 20,
+    paddingTop: 35,
     color: colors.darkgrey,
   },
   ratingsContainer: {
@@ -215,6 +219,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     color: colors.darkgrey,
+    paddingTop: 8,
   },
   details: {
     paddingLeft: 5,
@@ -225,9 +230,9 @@ const styles = StyleSheet.create({
     color: colors.darkgrey,
   },
   tagline: {
-    paddingTop: 50,
     fontStyle: "italic",
     color: colors.darkgrey,
+    paddingTop: 30,
   },
   trailerContainer: {
     width: "100%",

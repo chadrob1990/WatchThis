@@ -1,11 +1,27 @@
-import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { openBottomSheet } from "../../bottomsheet/utils/openBottomSheet";
+import { AppContext } from "../../../app/_layout";
 
 const VideoPlayerTitle = (props) => {
+  const context = useContext(AppContext);
+
+  const setBottomSheet = () => {
+    context.setBottomSheetType("video");
+    context.setBottomSheetContent(props.item);
+    console.log(props.item);
+    // context.setOpen(true);
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>{props.title}</Text>
-      <Text style={styles.text}>{props.releasedate}</Text>
+      <TouchableOpacity
+        type="submit"
+        onPress={() => [setBottomSheet(), openBottomSheet()]}
+      >
+        <Text style={styles.titleText}>{props.title}</Text>
+        <Text style={styles.text}>{props.releasedate}</Text>
+      </TouchableOpacity>
     </View>
   );
 };

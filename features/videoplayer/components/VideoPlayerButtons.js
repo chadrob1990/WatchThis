@@ -7,7 +7,7 @@ const VideoPlayerButtons = (props) => {
   return (
     <View style={styles.container}>
       <SaveButton size={35} item={"Test"} />
-      <Text style={styles.buttonText}>{props.videolikes}</Text>
+      {/* <Text style={styles.buttonText}>{props.videolikes}</Text> */}
       {/* <ShareButton size={35} item={"Test"} />
       <Text style={styles.buttonText}>Share</Text> */}
     </View>

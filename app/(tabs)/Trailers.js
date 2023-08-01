@@ -1,17 +1,21 @@
 import { Text, StyleSheet } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
+import ThisBottomSheet from "../../features/bottomsheet";
 import colors from "../../assets/colors";
 import VideoPlayerUI from "../../features/videoplayer/index";
 
 const Trailers = () => {
   return (
-    <LinearGradient
-      colors={[colors.gradient1, colors.gradient2, colors.gradient3]}
-      style={styles.container}
-    >
-      <VideoPlayerUI />
-    </LinearGradient>
+    <>
+      <LinearGradient
+        colors={[colors.gradient1, colors.gradient2, colors.gradient3]}
+        style={styles.container}
+      >
+        <VideoPlayerUI />
+      </LinearGradient>
+      <ThisBottomSheet />
+    </>
   );
 };
 

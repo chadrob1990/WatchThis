@@ -30,7 +30,7 @@
     "react-native-screens": "~3.20.0",
     "react-native-web": "~0.18.7",
     "react-native-web-webview": "^1.0.2",
-    "react-native-webview": "^13.3.0",
+    "react-native-webview": "^11.23.1",
     "react-native-youtube-iframe": "^2.3.0",
     "react-query": "^3.39.3",
     "react-spring-bottom-sheet": "^3.4.1"

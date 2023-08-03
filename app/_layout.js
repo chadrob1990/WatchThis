@@ -18,7 +18,6 @@ const StackLayout = () => {
     >
       <Stack
         screenOptions={{
-          //   headerShown: false,
           cardStyle: { backgroundColor: "black" },
         }}
       >
@@ -32,9 +31,7 @@ const StackLayout = () => {
               backgroundColor: colors.header,
             },
             headerTintColor: colors.tabIconInactive,
-            headerTitleStyle: {
-              // fontWeight: "bold",
-            },
+            headerTitleStyle: {},
           }}
         />
       </Stack>

@@ -3,7 +3,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet } from "react-native";
 import colors from "../../assets/colors";
 import PosterList from "../../features/posterlist/index";
-// import ThisBottomSheet from "../../features/bottomsheet";
 import testData from "../../assets/data/testData";
 
 const Saved = () => {
@@ -17,7 +16,6 @@ const Saved = () => {
       >
         <PosterList list={saved} />
       </LinearGradient>
-      {/* <ThisBottomSheet /> */}
     </>
   );
 };

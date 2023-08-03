@@ -18,9 +18,12 @@ const ShareButton = (props) => {
   return (
     <TouchableOpacity onPress={() => handleShare(props.item)}>
       <Ionicons name={"share-outline"} size={props.size} color={"white"} />
-      {/* <FontAwesome name="share" size={props.size} color="white" /> */}
     </TouchableOpacity>
   );
 };
 
 export default ShareButton;
+
+{
+  /* <FontAwesome name="share" size={props.size} color="white" /> */
+}

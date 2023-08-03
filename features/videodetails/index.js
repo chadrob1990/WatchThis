@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Image, Platform } from "react-native";
-import { WebView } from "react-native-webview";
+import React, { useState, useCallback, useRef, useEffect } from "react";
+import { StyleSheet, View, Text, Image, Platform, Alert } from "react-native";
+// import { WebView } from "react-native-webview";
+import YoutubePlayer from "react-native-youtube-iframe";
 import colors from "../../assets/colors";
 // import CloseButton from "../../../../components/buttons/CloseButton";
 
@@ -17,10 +18,22 @@ const VideoDetails = (props) => {
   const [youtubeid, setYoutubeid] = useState(null);
   const [youtubelink, setYoutubelink] = useState(null);
   const [rottenPercent, setRottenPercent] = useState(null);
+  const [playing, setPlaying] = useState(false);
   let item = props.item;
 
   useEffect(() => {
     fetchDetails();
+  }, []);
+
+  const onStateChange = useCallback((state) => {
+    if (state === "ended") {
+      setPlaying(false);
+      Alert.alert("video has finished playing!");
+    }
+  }, []);
+
+  const togglePlaying = useCallback(() => {
+    setPlaying((prev) => !prev);
   }, []);
 
   const fetchDetails = () => {
@@ -66,28 +79,16 @@ const VideoDetails = (props) => {
       ) : (
         <View>
           <View style={styles.itemDetailsContainer}>
-            <Text style={styles.headerText}>{item.title}</Text>
-            {/* <View style={styles.availableContainer}>
-              <View style={styles.availableIcon} />
-            </View> */}
-            {/* <View style={styles.ratingsContainer}>
-              <HeartIcon
-                style={styles.traktHeart}
-                color={colors.red}
-                height={16}
-                width={18}
-                strokecolor={colors.mediumgrey}
-              />
-              <Text style={styles.traktPercent}>{rating}</Text>
-              {rottenPercent ? (
-                <>
-                  <View style={styles.rottenTomato} />
-                  <Text style={styles.rottenPercent}>44%</Text>
-                </>
-              ) : (
-                <></>
-              )}
-            </View> */}
+            <Text
+              adjustsFontSizeToFit={true}
+              numberOfLines={1}
+              style={styles.headerText}
+            >
+              {item.title}
+            </Text>
+            <Text style={[styles.genres, { textTransform: "capitalize" }]}>
+              {genres}
+            </Text>
             {item.trailer ? (
               <View style={styles.trailerContainer}>
                 {currentOS == "web" ? (
@@ -97,7 +98,15 @@ const VideoDetails = (props) => {
                     allowFullScreen
                   />
                 ) : (
-                  <WebView source={{ uri: youtubelink }} />
+                  <View style={styles.mobileTrailerContainer}>
+                    <YoutubePlayer
+                      useLocalHTML={true}
+                      height={300}
+                      play={playing}
+                      videoId={youtubeid}
+                      onChangeState={onStateChange}
+                    />
+                  </View>
                 )}
               </View>
             ) : (
@@ -105,21 +114,17 @@ const VideoDetails = (props) => {
             )}
             <View style={styles.detailsContainer}>
               <View style={styles.genreDetailsContainer}>
-                {/*Should I limit this? */}
                 <Text style={styles.title}>
-                  Genre:
-                  <Text
-                    style={[styles.details, { textTransform: "capitalize" }]}
-                  >
-                    {genres}
-                  </Text>
+                  Released: <Text style={styles.details}>{item.year}</Text>
                 </Text>
               </View>
               <View style={styles.otherDetailsContainer}>
                 <Text style={styles.title}>
                   Score:{" "}
                   {rating ? (
-                    <Text style={styles.details}>{rating} </Text>
+                    <Text style={styles.details}>
+                      {rating} {"  "}
+                    </Text>
                   ) : (
                     <Text style={styles.details}>? </Text>
                   )}
@@ -127,7 +132,9 @@ const VideoDetails = (props) => {
                 <Text style={styles.title}>
                   Rating:{" "}
                   {item.certification ? (
-                    <Text style={styles.details}>{item.certification} </Text>
+                    <Text style={styles.details}>
+                      {item.certification} {"  "}
+                    </Text>
                   ) : (
                     <Text style={styles.details}>TBD </Text>
                   )}
@@ -135,18 +142,13 @@ const VideoDetails = (props) => {
                 <Text style={styles.title}>
                   Runtime: <Text style={styles.details}>{runtime}</Text>
                 </Text>
-                <Text style={styles.title}>
-                  Release Year: <Text style={styles.details}>{item.year}</Text>
-                </Text>
               </View>
             </View>
-            {/*Need to ensure there is a tagline*/}
             {tagline ? (
               <Text style={styles.tagline}>{item.tagline}</Text>
             ) : (
               <></>
             )}
-            {/*Need a cutoff ... see more */}
             <Text
               style={[
                 styles.description,
@@ -155,10 +157,6 @@ const VideoDetails = (props) => {
             >
               {item.overview}
             </Text>
-
-            {/* <View style={styles.posterContainer}>
-              <Image source={{ uri: poster }} style={styles.poster} />
-            </View> */}
           </View>
         </View>
       )}
@@ -177,10 +175,19 @@ const styles = StyleSheet.create({
     zIndex: 10,
     position: "fixed",
   },
+  mobileTrailerContainer: {
+    flex: 1,
+    width: "100%",
+    position: "relative",
+    overflow: "hidden",
+    justifyContent: "center",
+    alignSelf: "center",
+  },
   itemDetailsContainer: {
     marginHorizontal: 30,
     maxWidth: 500,
     alignSelf: "center",
+    paddingBottom: 100,
   },
   headerText: {
     fontSize: 22,
@@ -211,7 +218,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   otherDetailsContainer: {
-    paddingTop: 10,
+    paddingTop: 8,
     flexDirection: "row",
     flexWrap: "wrap",
     width: "100%",
@@ -219,11 +226,16 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     color: colors.darkgrey,
-    paddingTop: 8,
   },
   details: {
     paddingLeft: 5,
     paddingRight: 15,
+    color: colors.maintheme,
+  },
+  genres: {
+    paddingTop: 10,
+    fontSize: 13,
+    paddingLeft: 0,
     color: colors.maintheme,
   },
   description: {
@@ -266,3 +278,35 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 });
+
+{
+  /* <View style={styles.availableContainer}>
+              <View style={styles.availableIcon} />
+            </View> */
+}
+{
+  /* <View style={styles.ratingsContainer}>
+              <HeartIcon
+                style={styles.traktHeart}
+                color={colors.red}
+                height={16}
+                width={18}
+                strokecolor={colors.mediumgrey}
+              />
+              <Text style={styles.traktPercent}>{rating}</Text>
+              {rottenPercent ? (
+                <>
+                  <View style={styles.rottenTomato} />
+                  <Text style={styles.rottenPercent}>44%</Text>
+                </>
+              ) : (
+                <></>
+              )}
+            </View> */
+}
+
+{
+  /* <View style={styles.posterContainer}>
+              <Image source={{ uri: poster }} style={styles.poster} />
+            </View> */
+}

@@ -5,12 +5,19 @@
       "bundler": "metro"
     },
     "backgroundColor": "#232320",
-    "name": "watchthis",
+    "name": "WatchThis",
     "slug": "watchthis",
+    "icon": "./assets/images/favicon/favicon-16x16.png",
     "splash": {
       "image": "./assets/icons/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#232320"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
     }
   }
 }

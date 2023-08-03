@@ -1,15 +1,13 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import SaveButton from "../../../components/buttons/SaveButton";
-// import ShareButton from "../../../components/buttons/ShareButton";
+import SaveButton from "../../../../../components/buttons/SaveButton";
+// import ShareButton from "../../../../../components/buttons/ShareButton";
 
 const VideoPlayerButtons = (props) => {
   return (
     <View style={styles.container}>
       <SaveButton size={35} item={"Test"} />
-      {/* <Text style={styles.buttonText}>{props.videolikes}</Text> */}
-      {/* <ShareButton size={35} item={"Test"} />
-      <Text style={styles.buttonText}>Share</Text> */}
+      <Text style={styles.buttonText}>{props.videolikes}</Text>
     </View>
   );
 };
@@ -31,3 +29,8 @@ const styles = StyleSheet.create({
     paddingTop: 7,
   },
 });
+
+{
+  /* <ShareButton size={35} item={"Test"} />
+      <Text style={styles.buttonText}>Share</Text> */
+}

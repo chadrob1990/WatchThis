@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { openBottomSheet } from "../../bottomsheet/utils/openBottomSheet";
-import { AppContext } from "../../../app/_layout";
+import { openBottomSheet } from "../../../../bottomsheet/utils/openBottomSheet";
+import { AppContext } from "../../../../../app/_layout";
 
 const VideoPlayerTitle = (props) => {
   const context = useContext(AppContext);
@@ -9,8 +9,6 @@ const VideoPlayerTitle = (props) => {
   const setBottomSheet = () => {
     context.setBottomSheetType("video");
     context.setBottomSheetContent(props.item);
-    console.log(props.item);
-    // context.setOpen(true);
   };
 
   return (
@@ -44,6 +42,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontStyle: "italic",
     fontSize: 13,
-    opacity: "50%",
+    opacity: 0.5,
   },
 });

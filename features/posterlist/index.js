@@ -19,12 +19,11 @@ const PosterList = (props) => {
         }}
         ListEmptyComponent={<NoList />}
         keyExtractor={(item) => {
-          if (item.id) {
-            return item.id.toString();
-          } else if (item.ids) {
-            return item.ids.trakt.toString();
+          if (item._ids && item._ids.trakt) {
+            return item._ids.trakt.toString();
+          } else if (item.title) {
+            return item.title.toString();
           }
-          // Return a default key if neither item.id nor item.ids.trakt is present
           return "defaultKey";
         }}
       />

@@ -29,8 +29,17 @@ const Poster = (props) => {
 
   // Calculate the width and height of each poster dynamically based on the screen size
   const windowDimensions = useWindowDimensions();
-  const posterWidth = (windowDimensions.width - 8 * 4) / 3;
-  const posterHeight = (posterWidth / 2) * 3; // Assuming the aspect ratio of the poster is 2:3
+  let posterWidth;
+  let posterHeight;
+
+  if (windowDimensions.height > 400) {
+    posterWidth = (windowDimensions.width - 8 * 4) / 3;
+    posterHeight = (posterWidth / 2) * 3; // Assuming the aspect ratio of the poster is 2:3
+  } else {
+    const scaleFactor = 0.7;
+    posterWidth = ((windowDimensions.width - 8 * 4) / 3) * scaleFactor;
+    posterHeight = (posterWidth / 2) * 3; // Assuming the aspect ratio of the poster is 2:3
+  }
 
   return (
     <TouchableOpacity
@@ -48,7 +57,7 @@ const Poster = (props) => {
 const styles = StyleSheet.create({
   image: {
     opacity: 1,
-    margin: 2,
+    margin: 4,
     borderRadius: 3,
     maxWidth: 200, // Set the maximum width for each poster
     maxHeight: 300, // Set the maximum height for each poster

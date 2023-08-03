@@ -35,9 +35,7 @@ export default () => {
             backgroundColor: colors.header,
           },
           headerTintColor: colors.tabIconInactive,
-          headerTitleStyle: {
-            // fontWeight: "bold",
-          },
+          headerTitleStyle: {},
         }}
       />
       <Tabs.Screen
@@ -48,9 +46,7 @@ export default () => {
             backgroundColor: colors.header,
           },
           headerTintColor: colors.tabIconInactive,
-          headerTitleStyle: {
-            // fontWeight: "bold",
-          },
+          headerTitleStyle: {},
         }}
       />
     </Tabs>
